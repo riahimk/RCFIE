@@ -1,0 +1,243 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>General description of the program</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-11-19"><meta name="DC.source" content="Scattering.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>General description of the program</h1><!--introduction--><p>Numerical Algorithm for the resolution of the scattering problem governed by the following Helmholtz equation</p><p><img src="Scattering_eq76253.png" alt="$$ \Delta u^s + k^2 u^s  = 0 \quad in\quad R\backslash \overline\Omega$$"></p><p>with the boundary condition:</p><p><img src="Scattering_eq97243.png" alt="$$ \partial_n u^s + Z u^s = -\partial_n u^{i} - Z u^{i}\quad on\quad \Gamma$$"></p><p>Complemented with the radiation condition at <img src="Scattering_eq04264.png" alt="$\infty$"></p><p><img src="Scattering_eq55973.png" alt="$$\lim_{|r|\rightarrow\infty}r^{\frac{1}{2}} (\partial_r u^s - ik u^s) =0,$$"></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">parameters of the obstacle scattering problem</a></li><li><a href="#2">instantiation of the scatterer's shape unite Circle</a></li><li><a href="#3">Plot the graph-options of myShape</a></li><li><a href="#4">instantiation of the scatterer's shape Ellipse</a></li><li><a href="#5">Plot the graph-options of myShape Ellipse</a></li><li><a href="#6">instantiation of the scatterer's shape Kite C-shaped</a></li><li><a href="#7">Plot the graph-options of myShape Kite C-shaped</a></li><li><a href="#8">instantiation of the scatterer's shape Kite</a></li><li><a href="#9">Plot the graph-options of myShape Kite</a></li><li><a href="#10">Properties (read-only) of myShape are:</a></li><li><a href="#11">Instantiation class "single-layer" potential integral operator</a></li><li><a href="#12">Instantiation class "double-layer" potential integral operator</a></li><li><a href="#13">Instantiation of the right hand side vector <img src="Scattering_eq31049.png" alt="$g$"> for the linear system <img src="Scattering_eq06172.png" alt="$A\Phi=g$"></a></li><li><a href="#14">Solve system <img src="Scattering_eq06172.png" alt="$A\Phi=g$"> with the iterative solver GMRES</a></li><li><a href="#15">Authors - Copyright :</a></li></ul></div><h2>parameters of the obstacle scattering problem<a name="1"></a></h2><pre class="codeinput">myScattering_problem.TYPE    =[<span class="string">'Dirichlet '</span>;<span class="string">'Neumann   '</span>;<span class="string">'Impedance '</span>;<span class="string">'GImpedance'</span>];<span class="comment">% padded</span>
+myScattering_problem.n       = 20;   <span class="comment">% \pi/n discretization points on the boundary $\Gamma$</span>
+myScattering_problem.eta     = .2;   <span class="comment">% coupling parameter</span>
+myScattering_problem.k       =.4;    <span class="comment">% k: wave number of the scattering problem</span>
+myScattering_problem.kk      = myScattering_problem.k^2;
+myScattering_problem.type    = myScattering_problem.TYPE(1,:);
+</pre><h2>instantiation of the scatterer's shape unite Circle<a name="2"></a></h2><pre class="codeinput">myShape=Circle(1,myScattering_problem.n);      <span class="comment">%  circle of radius 1 composed by 2*n discret points</span>
+</pre><h2>Plot the graph-options of myShape<a name="3"></a></h2><pre class="codeinput">graph(myShape);     <span class="comment">% plot the shape as parametric two-dimension function</span>
+</pre><img vspace="5" hspace="5" src="Scattering_01.png" alt=""> <h2>instantiation of the scatterer's shape Ellipse<a name="4"></a></h2><pre class="codeinput">myShape=Ellipse(1,.2,myScattering_problem.n);      <span class="comment">%  circle of radius 1 composed by 2*n discret points</span>
+</pre><h2>Plot the graph-options of myShape Ellipse<a name="5"></a></h2><pre class="codeinput">graph(myShape);     <span class="comment">% plot the shape as parametric two-dimension function</span>
+</pre><img vspace="5" hspace="5" src="Scattering_02.png" alt=""> <h2>instantiation of the scatterer's shape Kite C-shaped<a name="6"></a></h2><pre class="codeinput">myShape=Lune(1,myScattering_problem.n);      <span class="comment">%  Kite C-shaped with rotation -90&deg;</span>
+</pre><h2>Plot the graph-options of myShape Kite C-shaped<a name="7"></a></h2><pre class="codeinput">graph(myShape);     <span class="comment">% plot the shape as parametric two-dimension function</span>
+</pre><img vspace="5" hspace="5" src="Scattering_03.png" alt=""> <h2>instantiation of the scatterer's shape Kite<a name="8"></a></h2><pre class="codeinput">myShape=Kite(1,myScattering_problem.n);      <span class="comment">%  Kite shaped with rotation -90&deg;</span>
+</pre><h2>Plot the graph-options of myShape Kite<a name="9"></a></h2><pre class="codeinput">graph(myShape);     <span class="comment">% plot the shape as parametric two-dimension function</span>
+</pre><img vspace="5" hspace="5" src="Scattering_04.png" alt=""> <h2>Properties (read-only) of myShape are:<a name="10"></a></h2><pre class="codeinput">myShape
+</pre><pre class="codeoutput">
+myShape = 
+
+  Kite with properties:
+
+             radius: 1
+                  n: 20
+                  x: [1x40 double]
+                  y: [1x40 double]
+                x_t: [1x40 double]
+                y_t: [1x40 double]
+               x_tt: [1x40 double]
+               y_tt: [1x40 double]
+          arclength: [1x40 double]
+             normal: [2x40 double]
+            tangent: [2x40 double]
+           distance: [40x40 double]
+    sinTminusTauOv2: [40x40 double]
+
+</pre><h2>Instantiation class "single-layer" potential integral operator<a name="11"></a></h2><pre class="codeinput">tic
+disp <span class="string">'Single-layer operator class construction'</span>
+SL=Single_Layer(myShape,myScattering_problem)
+toc
+</pre><pre class="codeoutput">Single-layer operator class construction
+
+SL = 
+
+  Single_Layer with properties:
+
+       K1: -0.1592
+       K2: 0.3731 + 0.5000i
+        n: 20
+        R: [40x40 double]
+        T: []
+    gamma: 0.5772
+
+Elapsed time is 0.026861 seconds.
+</pre><h2>Instantiation class "double-layer" potential integral operator<a name="12"></a></h2><pre class="codeinput">tic
+disp <span class="string">'Double-layer operator class construction'</span>
+DL=Double_Layer(myShape,myScattering_problem)
+toc
+</pre><pre class="codeoutput">Double-layer operator class construction
+
+DL = 
+
+  Double_Layer with properties:
+
+       K1: 0
+       K2: -0.9048
+        n: 20
+        R: []
+        T: []
+    gamma: 0.5772
+
+Elapsed time is 0.179803 seconds.
+</pre><h2>Instantiation of the right hand side vector <img src="Scattering_eq31049.png" alt="$g$"> for the linear system <img src="Scattering_eq06172.png" alt="$A\Phi=g$"><a name="13"></a></h2><h2>Solve system <img src="Scattering_eq06172.png" alt="$A\Phi=g$"> with the iterative solver GMRES<a name="14"></a></h2><p>Build up the discret linear system <img src="Scattering_eq06172.png" alt="$A\Phi=g$"> that corresponds ... to the combined acoustic double- and single-layer potential</p><p><img src="Scattering_eq09005.png" alt="$$u^s := DL +i\eta SL$$"></p><pre class="codeinput">tic
+<span class="comment">%Phi=Solver(myScattering_problem.type);</span>
+toc
+disp <span class="string">' ** Succesfull end **'</span>
+</pre><pre class="codeoutput">Elapsed time is 0.000050 seconds.
+ ** Succesfull end **
+</pre><h2>Authors - Copyright :<a name="15"></a></h2><p>Mohamed Kamel RIAHI : <a href="mailto:riahi@njit.edu">riahi@njit.edu</a> Joint work with Yassine BOUBENDIR and Catalin TURC</p><p><b>Copyright</b>: New Jersey Institute of Technology</p><p>Last modified Nov 17 2014</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% General description of the program
+%
+% Numerical Algorithm for the resolution of the scattering problem governed
+% by the following Helmholtz equation 
+%
+% $$ \Delta u^s + k^2 u^s  = 0 \quad in\quad R\backslash \overline\Omega$$
+% 
+% with the boundary condition:
+%
+% $$ \partial_n u^s + Z u^s = -\partial_n u^{i} - Z u^{i}\quad on\quad \Gamma$$
+% 
+% Complemented with the radiation condition at $\infty$
+%
+% $$\lim_{|r|\rightarrow\infty}r^{\frac{1}{2}} (\partial_r u^s - ik u^s) =0,$$
+
+
+
+%% parameters of the obstacle scattering problem
+myScattering_problem.TYPE    =['Dirichlet ';'Neumann   ';'Impedance ';'GImpedance'];% padded
+myScattering_problem.n       = 20;   % \pi/n discretization points on the boundary $\Gamma$
+myScattering_problem.eta     = .2;   % coupling parameter
+myScattering_problem.k       =.4;    % k: wave number of the scattering problem 
+myScattering_problem.kk      = myScattering_problem.k^2;
+myScattering_problem.type    = myScattering_problem.TYPE(1,:);
+                               
+%% instantiation of the scatterer's shape unite Circle
+myShape=Circle(1,myScattering_problem.n);      %  circle of radius 1 composed by 2*n discret points
+%% Plot the graph-options of myShape
+graph(myShape);     % plot the shape as parametric two-dimension function
+
+
+%% instantiation of the scatterer's shape Ellipse
+myShape=Ellipse(1,.2,myScattering_problem.n);      %  circle of radius 1 composed by 2*n discret points
+%% Plot the graph-options of myShape Ellipse
+graph(myShape);     % plot the shape as parametric two-dimension function
+
+
+%% instantiation of the scatterer's shape Kite C-shaped
+myShape=Lune(1,myScattering_problem.n);      %  Kite C-shaped with rotation -90°
+%% Plot the graph-options of myShape Kite C-shaped
+graph(myShape);     % plot the shape as parametric two-dimension function
+
+
+%% instantiation of the scatterer's shape Kite  
+myShape=Kite(1,myScattering_problem.n);      %  Kite shaped with rotation -90°
+%% Plot the graph-options of myShape Kite
+graph(myShape);     % plot the shape as parametric two-dimension function
+
+
+%% Properties (read-only) of myShape are:
+
+myShape
+
+
+
+
+
+%% Instantiation class "single-layer" potential integral operator
+tic
+disp 'Single-layer operator class construction'
+SL=Single_Layer(myShape,myScattering_problem)
+toc
+
+
+%% Instantiation class "double-layer" potential integral operator
+tic 
+disp 'Double-layer operator class construction'
+DL=Double_Layer(myShape,myScattering_problem)
+toc
+
+
+%% Instantiation of the right hand side vector $g$ for the linear system $A\Phi=g$
+
+
+
+
+%% Solve system $A\Phi=g$ with the iterative solver GMRES
+% Build up the discret linear system $A\Phi=g$ that corresponds ...
+% to the combined acoustic double- and single-layer potential
+%
+% $$u^s := DL +i\eta SL$$ 
+% 
+tic
+%Phi=Solver(myScattering_problem.type);
+toc 
+disp ' ** Succesfull end **'
+
+
+%% Authors - Copyright : 
+% Mohamed Kamel RIAHI : riahi@njit.edu
+% Joint work with Yassine BOUBENDIR and Catalin TURC
+%
+% *Copyright*: New Jersey Institute of Technology
+%
+% Last modified Nov 17 2014
+##### SOURCE END #####
+--></body></html>

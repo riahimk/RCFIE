@@ -1,0 +1,164 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>General description of the program</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-11-22"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>General description of the program</h1><!--introduction--><p>Numerical Algorithm for the resolution of the scattering problem governed by the following Helmholtz equation</p><p><img src="main_eq11222786322513032060.png" alt="$$ \Delta u^s + k^2 u^s  = 0 \quad in\quad R\backslash \overline\Omega$$"></p><p>with the boundary condition:</p><p><img src="main_eq07549937221473026570.png" alt="$$ \partial_n u^s + Z u^s = -\partial_n u^{i} - Z u^{i}\quad on\quad \Gamma$$"></p><p>Complemented with the radiation condition at <img src="main_eq16739024125614530807.png" alt="$\infty$"></p><p><img src="main_eq12414515793723845949.png" alt="$$\lim_{|r|\rightarrow\infty}r^{\frac{1}{2}} (\partial_r u^s - ik u^s) =0,$$"></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">parameters of the obstacle scattering problem</a></li><li><a href="#2">instantiation of the scatterer's shape Kite</a></li><li><a href="#3">Plot the graph-options of myShape Kite</a></li><li><a href="#4">Solve system <img src="main_eq09558076910772883767.png" alt="$A\Phi=g$"> with the iterative solver GMRES</a></li><li><a href="#5">Authors - Copyright :</a></li></ul></div><h2>parameters of the obstacle scattering problem<a name="1"></a></h2><pre class="codeinput">myScattering_problem.TYPE     =[<span class="string">'Dirichlet '</span>;<span class="string">'Neumann   '</span>;<span class="string">'Impedance '</span>;<span class="string">'GImpedance'</span>];<span class="comment">% padded</span>
+myScattering_problem.eta      =.5;    <span class="comment">% coupling parameter</span>
+myScattering_problem.d        =[1; 0];
+myScattering_problem.k        = 10;    <span class="comment">% k: wave number of the scattering problem</span>
+<span class="comment">%- - - - - - - - - - - - - - - - - - - - - - - -</span>
+myScattering_problem.T        = 2*pi/myScattering_problem.k;
+myScattering_problem.n        = 120;<span class="comment">%myScattering_problem.T/10;   % \pi/n discretization points on the boundary $\Gamma$</span>
+myScattering_problem.kk       = myScattering_problem.k^2;
+myScattering_problem.type     = myScattering_problem.TYPE(1,:);
+</pre><h2>instantiation of the scatterer's shape Kite<a name="2"></a></h2><pre class="codeinput">myShape=Kite(1,myScattering_problem.n);      <span class="comment">%  Kite shaped with rotation -90&deg;</span>
+</pre><h2>Plot the graph-options of myShape Kite<a name="3"></a></h2><pre class="codeinput"><span class="comment">%graph(myShape);     % plot the shape as parametric two-dimension function</span>
+</pre><h2>Solve system <img src="main_eq09558076910772883767.png" alt="$A\Phi=g$"> with the iterative solver GMRES<a name="4"></a></h2><p>Build up the discret linear system <img src="main_eq09558076910772883767.png" alt="$A\Phi=g$"> that corresponds ... to the combined acoustic double- and single-layer potential</p><p><img src="main_eq03059011077627927039.png" alt="$$u^s := DL - i\eta SL$$"></p><pre class="codeinput">tic
+Pb  = Problem(myShape,myScattering_problem);
+Sol = Solve  (myShape,Pb);
+figure(1);hold <span class="string">on</span>;
+plot3(myShape.x,myShape.y,real(Sol.density))
+savefig([myShape.title <span class="string">'density.fig'</span>]);
+hold <span class="string">off</span>;
+toc
+disp <span class="string">' ** Succesfull end **'</span>
+</pre><pre class="codeoutput">Assembling kernel for SL
+Elapsed time is 1.405734 seconds.
+Assembling kernel for DL
+Elapsed time is 73.336597 seconds.
+Assembling regularization kernels.. 
+Elapsed time is 0.654969 seconds.
+We solve the Scattering problem with:
+ Dirichlet boundary condition !
+We solve the Scattering problem with:
+ Dirichlet boundary condition !
+Begin Solving with gmres
+Elapsed time is 4.987223 seconds.
+ ** Succesfull end **
+</pre><img vspace="5" hspace="5" src="main_01.png" alt=""> <h2>Authors - Copyright :<a name="5"></a></h2><p>Mohamed Kamel RIAHI : <a href="mailto:riahi@njit.edu">riahi@njit.edu</a> Joint work with Yassine BOUBENDIR and Catalin TURC</p><p><b>Copyright</b>: New Jersey Institute of Technology</p><p>Last modified Nov 17 2014</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% General description of the program
+%
+% Numerical Algorithm for the resolution of the scattering problem governed
+% by the following Helmholtz equation 
+%
+% $$ \Delta u^s + k^2 u^s  = 0 \quad in\quad R\backslash \overline\Omega$$
+% 
+% with the boundary condition:
+%
+% $$ \partial_n u^s + Z u^s = -\partial_n u^{i} - Z u^{i}\quad on\quad \Gamma$$
+% 
+% Complemented with the radiation condition at $\infty$
+%
+% $$\lim_{|r|\rightarrow\infty}r^{\frac{1}{2}} (\partial_r u^s - ik u^s) =0,$$
+
+
+
+%% parameters of the obstacle scattering problem
+myScattering_problem.TYPE     =['Dirichlet ';'Neumann   ';'Impedance ';'GImpedance'];% padded
+myScattering_problem.eta      =.5;    % coupling parameter
+myScattering_problem.d        =[1; 0];
+myScattering_problem.k        = 10;    % k: wave number of the scattering problem 
+%- - - - - - - - - - - - - - - - - - - - - - - -
+myScattering_problem.T        = 2*pi/myScattering_problem.k;
+myScattering_problem.n        = 120;%myScattering_problem.T/10;   % \pi/n discretization points on the boundary $\Gamma$
+myScattering_problem.kk       = myScattering_problem.k^2;
+myScattering_problem.type     = myScattering_problem.TYPE(1,:);
+                               
+
+%% instantiation of the scatterer's shape Kite  
+myShape=Kite(1,myScattering_problem.n);      %  Kite shaped with rotation -90°
+%% Plot the graph-options of myShape Kite
+%graph(myShape);     % plot the shape as parametric two-dimension function
+
+
+%% Solve system $A\Phi=g$ with the iterative solver GMRES
+% Build up the discret linear system $A\Phi=g$ that corresponds ...
+% to the combined acoustic double- and single-layer potential
+%
+% $$u^s := DL - i\eta SL$$ 
+% 
+tic
+Pb  = Problem(myShape,myScattering_problem);
+Sol = Solve  (myShape,Pb);
+figure(1);hold on; 
+plot3(myShape.x,myShape.y,real(Sol.density)) 
+savefig([myShape.title 'density.fig']);
+hold off;
+toc 
+disp ' ** Succesfull end **'
+
+
+%% Authors - Copyright : 
+% Mohamed Kamel RIAHI : riahi@njit.edu
+% Joint work with Yassine BOUBENDIR and Catalin TURC
+%
+% *Copyright*: New Jersey Institute of Technology
+%
+% Last modified Nov 17 2014
+##### SOURCE END #####
+--></body></html>
